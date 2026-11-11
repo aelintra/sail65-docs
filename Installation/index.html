@@ -743,7 +743,7 @@
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>curl<span class="w"> </span>-s<span class="w"> </span>https://packagecloud.io/install/repositories/aelintra/SARK65/script.deb.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>bash
 </span></code></pre></div>
 <h2 id="sark-65-installation">SARK 6.5 Installation<a class="headerlink" href="#sark-65-installation" title="Permanent link">#</a></h2>
-<p>The latest SARK 6.5 will auto-install on Ubuntu 22.04 LTS (Jammy Jellyfish).  It may install on other debian-like releases, but you will need to grab the deb packages from GitHub and install them manually (<a href="https://github.com/aelintra/sail65">https://github.com/aelintra/sail65</a>).</p>
+<p>The latest SARK 6.5 will auto-install on Ubuntu 24.04 LTS (Noble Numbat).  It may install on other debian-like releases, but you will need to grab the deb packages from GitHub and install them manually (<a href="https://github.com/aelintra/sail65">https://github.com/aelintra/sail65</a>).</p>
 <h3 id="installing-a-mail-agent">Installing a Mail Agent<a class="headerlink" href="#installing-a-mail-agent" title="Permanent link">#</a></h3>
 <p>If this is a new install, you should install a mail agent. SARK has on-board support for a lightweight mail agent called ssmtp. If you install it, then SARK will provide a tab in the networking section for you to configure it. Install it now (so that SARK can set the correct permissions) ...:</p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ssmtp
@@ -753,12 +753,12 @@
 </span></code></pre></div>
 <h3 id="install-mysqlmariadb">Install mySQL/Mariadb<a class="headerlink" href="#install-mysqlmariadb" title="Permanent link">#</a></h3>
 <p>The SARK install uses an SQL database to process call statistics.  It can be either mysql or mariadb but SARK does not specify which, so you'll need to decide. If in doubt, choose mariadb.   Install it now ...  </p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mysql-server
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mariadb-server
 </span></code></pre></div>
 <p>OR</p>
-<p><div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mariadb-server
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mysql-server
 </span></code></pre></div>
-<strong>N.B. DO NOT run mysql_secure_installation yet!!</strong>   The SARK install will automatically build the CDR Database for you but it needs access to mysql root without a password.   Once the installation is done, you <em>should</em> then run <strong>mysql_secure_installation</strong> to secure your DB instance (see below).</p>
+<p><strong>N.B. DO NOT run mysql_secure_installation yet!!</strong>   The SARK install will automatically build the CDR Database for you but it needs access to mysql root without a password.   Once the installation is done, you <em>should</em> then run <strong>mysql_secure_installation</strong> to secure your DB instance (see below).</p>
 <h3 id="install-iptables">Install iptables<a class="headerlink" href="#install-iptables" title="Permanent link">#</a></h3>
 <p>Ubuntu 24.04 favours ufw and it can conflict with shorewall so disable it.</p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>--now<span class="w"> </span>ufw
