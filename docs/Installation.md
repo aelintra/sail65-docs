@@ -8,7 +8,7 @@ V6 can be installed onto X86 or ARM platforms. Only 64-bit architectures are sup
 
 ## Before you begin
 
-- V6.5 is designed to run as an appliance and must not be installed onto a multi-purpose system that has other software already installed on it. If you try, you will likely break both the existing systems and SARK. You must begin with an Ubuntu 22.04 minimal install which contains nothing but an SSH server.
+- V6.5 is designed to run as an appliance and must not be installed onto a multi-purpose system that has other software already installed on it. If you try, you will likely break both the existing systems and SARK. You must begin with an Ubuntu 24.04 minimal install which contains nothing but an SSH server.
 
 ## Installing the package manager
 
@@ -73,46 +73,7 @@ sudo apt install sail
 
 The install will take a good few minutes depending upon the speed of the donor box and your internet link. During the install, you may be asked to enter an admin password for LDAP (make a note of it, you'll need it later). It will also ask about dumpcap but just take the default (No) and let the install run to its conclusion.
 
-### link the HPE according to your architecture
-SARK ships with a compiled C code switching engine called sarkhpe.  There are two versions; one for regular X86-64 type architectures and one for the increasingly popular ARM64.
-
-If you don't know which arch you are running do this...
-
-```sh
-uname -m
-```
-
-It will return something like *X86-64* (Intel/AMD) or *aarch64* (ARM).  Once you have decided which architecture you have, proceed as follows..
-
-```sh
-cd /usr/share/asterisk/agi-bin
-ls -l
-```
-
-Example output:
-
-```text
--rwxr-xr-x 1 root root  19525 Dec 14  2023 kwakeup
--rwxr-xr-x 1 root root 530944 Mar 12 19:00 sarkhpe_amd64
--rwxr-xr-x 1 root root 545528 Mar 12 19:00 sarkhpe_arm64
-```
-
-As you can see, the two HPE modules each have a suffix denoting the arch for which they were compiled.
-Choose the one you want by creating a soft link to it...
-
-```sh
-sudo ln -s sarkhpe_amd64 sarkhpe
-```
-
-Now the file list should show the link you created:
-
-```text
-ls -l 
--rwxr-xr-x 1 root root  19525 Dec 14  2023 kwakeup
-lrwxrwxrwx 1 root root     13 Mar 13 18:47 sarkhpe -> sarkhpe_amd64
--rwxr-xr-x 1 root root 530944 Mar 12 19:00 sarkhpe_amd64
--rwxr-xr-x 1 root root 545528 Mar 12 19:00 sarkhpe_arm64
-```
+SARK’s switching engine (`sailhpe` / `sarkhpe`) is pulled in as a dependency of `sail`. Apt installs the native binary for your host architecture (amd64 or arm64) — no manual symlink step is required.
 
 ### Reboot
 
@@ -124,7 +85,7 @@ sudo reboot
 
 ### Choose your voicemail module
 
-For Ubuntu 22.04 and higher you will need to choose which voicemail module you want to use with Asterisk.  There are three choices:-
+For Ubuntu 24.04 and higher you will need to choose which voicemail module you want to use with Asterisk.  There are three choices:-
 
 - app_voicemail.so
 - app_voicemail_imap.sp
