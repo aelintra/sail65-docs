@@ -745,12 +745,12 @@
 <p>Any cell rendered in blue can be inline edited by clicking on it and modifying the contents.  Once done, click away (i.e. <em>outside</em> the edit box.)</p>
 <p>Create a new rule by clicking the <em>+Add</em> button at the top of the screen.</p>
 <h2 id="source">Source<a class="headerlink" href="#source" title="Permanent link">#</a></h2>
-<p>Source will always begin <em>net</em>.   If you type nothing else than this rule will be worldwide accessible (so be careful with it).   To narrow the permission, follow <em>net</em> with a colon (net:) and then a source.  The source can be specified in CIDR format or as an absolute IP address.</p>
+<p>Source will always begin <em>net</em>.   If you type nothing else than the rule will be worldwide accessible (so be careful with it).   To narrow the permission, follow <em>net</em> with a colon (net:) and then a source.  The source can be specified in CIDR format or as an absolute IP address.</p>
 <p>So, if you wanted to restrict access to a rule from IP address 5.5.5.5 (and ONLY 5.5.5.5), then you could code </p>
 <p><em>net:5.5.5.5</em></p>
 <p>or </p>
 <p><em>net:5.5.5.5/32</em>, which is the same thing.</p>
-<p>There is a special value,  <em>$LAN</em>, which restricts access from your local subnet (e.g. 192.168.1.0/24)</p>
+<p>There is a special value,  <em>$LAN</em>, which allows access from your local subnet (e.g. 192.168.0.0/16, 172,16.0.0/12, 10.0.0.0/8 etc.).  The actual subnet is harvested by SARK when it initializes.</p>
 <p><em>net:$LAN</em></p>
 <h2 id="protocol">Protocol<a class="headerlink" href="#protocol" title="Permanent link">#</a></h2>
 <p>This is a dropdwon which can either <em>udp</em> or <em>tcp</em></p>
