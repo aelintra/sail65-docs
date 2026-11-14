@@ -22,7 +22,7 @@
     
     
       
-        <title>Upgrade from an earlier version - SARK 6.5.0 Documentation</title>
+        <title>Upgrade - SARK 6.5.0 Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#upgrade-from-an-earlier-version" class="md-skip">
+        <a href="#upgrade" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Upgrade from an earlier version
+              Upgrade
             
           </span>
         </div>
@@ -317,7 +317,7 @@
   
     
   
-  Upgrade from an earlier version
+  Upgrade
 
       </a>
     </li>
@@ -487,7 +487,7 @@
           
   
   <span class="md-ellipsis">
-    Upgrade from an earlier version
+    Upgrade
     
   </span>
   
@@ -499,7 +499,7 @@
         
   
   <span class="md-ellipsis">
-    Upgrade from an earlier version
+    Upgrade
     
   </span>
   
@@ -643,8 +643,9 @@
 
 
 
-<h1 id="upgrade-from-an-earlier-version">Upgrade from an earlier version<a class="headerlink" href="#upgrade-from-an-earlier-version" title="Permanent link">#</a></h1>
-<p>SARK upgrades are handled via migration.   In other words, you create a new bare server install of SARK V6.5 and then load a backup from a previous version.   This will usually work without issue for all V6.x releases.  It <em>may</em> work for prevous V5.x releases but YMMV.   It's important to note that V6.5 uses the PJSIP module in Asterisk and this may have implications if you have any custom apps (or your own custom code) which, for example, dial <em>SIP</em>/. You should examine your custom apps to ensure that any such occurrences are updated to dial <em>PJSIP/</em> instead.</p>
+<h1 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">#</a></h1>
+<p>SARKV6.5  upgrades are handled via migration.   In other words, you create a new bare server install of SARK V6.5 and then load a backup from a previous version.   This will usually work without issue for all V6.x releases.  It <em>may</em> work for prevous V5.x releases but YMMV.   </p>
+<p>It's important to note that V6.5 uses the PJSIP module in Asterisk and this may have implications if you have any custom apps (or your own custom code) which, for example, dial <em>SIP</em>/. You should examine your custom apps to ensure that any such occurrences are updated to dial <em>PJSIP/</em> instead.</p>
 <h2 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">#</a></h2>
 <p>Create a new instance according to the Installation section.   Once you have your new instance and can login to it you are ready to migrate the old system forward.  </p>
 <p><em>Top Tip</em> - Assuming you are working with a VM instance (and you should be for testing), take a snapshot of your clean-install system before proceeding.  This will allow you to quickly recover in case of accidents later in the process.  </p>
