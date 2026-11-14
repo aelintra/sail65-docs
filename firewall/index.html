@@ -686,10 +686,10 @@
 <p>Below is a screenshot of the firewall from a newly installed system.  </p>
 <p><strong>N.B.</strong> ports 80, 443 and 22 are initially set open to anywhere.  This is so you don't accidentally lock yourself out before you begin.   You MUST restrict these to a sensible set of values before you go live with the system.   Usually, as a first step, <em>net:$LAN</em> (see below) might be sufficient.  Obviously, if you are accessing the system from outside the LAN then you'll need to handle that too.</p>
 <p><img alt="Default firewall rules" src="../assets/images/DefaultFirewall.png" /></p>
-<p>Any cell rendered in blue can be inline edited by clicking on it and modifying the contents.  Once done, click away (i.e. <em>outside</em> the edit box.)</p>
+<p>Any cell rendered in blue can be inline edited by clicking on it and modifying the contents.  Once done, press return or click anywhere outside the edit box.</p>
 <p>Create a new rule by clicking the <em>+Add</em> button at the top of the screen.</p>
 <h2 id="source">Source<a class="headerlink" href="#source" title="Permanent link">#</a></h2>
-<p>Source will always begin <em>net</em>.   If you type nothing else than the rule will be worldwide accessible (so be careful with it).   To narrow the permission, follow <em>net</em> with a colon (net:) and then a source.  The source can be specified in CIDR format or as an absolute IP address.</p>
+<p>A Source entry will always begin with <em>net</em>.   If you type nothing else than the rule will be worldwide accessible (so be careful with it).   To narrow the permission, follow <em>net</em> with a colon (net:) and then a source.  The source can be specified in CIDR format or as an absolute IP address.</p>
 <p>So, if you wanted to restrict access to a rule from IP address 5.5.5.5 (and ONLY 5.5.5.5), then you could code </p>
 <p><em>net:5.5.5.5</em></p>
 <p>or </p>
