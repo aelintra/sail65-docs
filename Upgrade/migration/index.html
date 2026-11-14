@@ -667,13 +667,14 @@
 
 
 <h1 id="upgrade-from-an-earlier-version">Upgrade from an earlier version<a class="headerlink" href="#upgrade-from-an-earlier-version" title="Permanent link">#</a></h1>
-<p>SARK uogrades are handled via migration.   In other words, you create a new bare server install of SARK V6.5 and then load a backup from a previous version.   This will usually work without issue for all V6.x releases.  It <em>may</em> work for prevous V5,x releases but YMMV.   It's important to note that V6,5 uses the PJSIP module in Asterisk and this may have implications if you have any things like custom apps which, for example, dial SIP/, you should examine your custome apps to ensure that any such occurrences are updated to dial PJSIP instead.</p>
+<p>SARK upgrades are handled via migration.   In other words, you create a new bare server install of SARK V6.5 and then load a backup from a previous version.   This will usually work without issue for all V6.x releases.  It <em>may</em> work for prevous V5,x releases but YMMV.   It's important to note that V6.5 uses the PJSIP module in Asterisk and this may have implications if you have any custom apps (or your own custom code) which, for example, dial <em>SIP</em>/. You should examine your custom apps to ensure that any such occurrences are updated to dial <em>PJSIP/</em> instead.</p>
 <h2 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">#</a></h2>
 <p>Create a new instance according to the Installation section.   Once you have your new instance and can login to it you are ready to migrate the old system forward.  </p>
+<p><em>Top Tip</em> - Assuming you are working with a VM instance (and you should be for testing), take a snapshot of your clean-install system before proceeding.  This will allow you to quickly recover in case of accidents later in the process.  </p>
 <h2 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">#</a></h2>
 <p>Download a recent backup from your old system to your workstation.   You will use this to create the new system</p>
 <h2 id="step-3">Step 3<a class="headerlink" href="#step-3" title="Permanent link">#</a></h2>
-<p>Login to the new system and navigate to Settings-&gt;Backup/Restore.   Click the upload button to load your backup to the new system.  The backup will appear in the Saved Backups list.   Click the restore icon for that backup set.  Restore the following sections </p>
+<p>Login to the new system and navigate to <em>Settings-&gt;Backup/Restore</em>.   Click the <em>Upload</em> button at the top right of the panel to load your backup to the new system.  The backup will appear in the <em>Saved Backups</em> list.   Click the restore icon for that backup set.  Restore the following sections </p>
 <ul>
 <li>Sark database</li>
 <li>Voicemail</li>
@@ -684,6 +685,8 @@
 <h2 id="step-4">Step 4<a class="headerlink" href="#step-4" title="Permanent link">#</a></h2>
 <p>Issue a Commit </p>
 <p><strong>N.B.</strong> Backups do not contain firewall rules so you will need to recreate them on the new instance.</p>
+<p>Once you have set the firewall to your taste, reboot the instance,</p>
+<p>You now should have your new 6.5 system ready to test.</p>
 
 
 
