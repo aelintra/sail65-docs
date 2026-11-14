@@ -864,7 +864,7 @@
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/ssmtp
 </span></code></pre></div>
 <h3 id="install-mysqlmariadb">Install MySQL/Mariadb<a class="headerlink" href="#install-mysqlmariadb" title="Permanent link">#</a></h3>
-<p>The SARK install uses an SQL database to process call statistics.  It can be either mysql or mariadb but SARK does not specify which, so you'll need to decide. If in doubt, choose mariadb.   Install it now ...  </p>
+<p>SARK uses an SQL database to process call statistics.  It can be either mysql or mariadb but SARK does not specify which, so you'll need to decide. If in doubt, choose mariadb.   Install it now ...  </p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mariadb-server
 </span></code></pre></div>
 <p>OR</p>
@@ -880,8 +880,7 @@
 <h3 id="install-the-sark-packages">Install the SARK packages<a class="headerlink" href="#install-the-sark-packages" title="Permanent link">#</a></h3>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>sail
 </span></code></pre></div>
-<p>The install will take a good few minutes depending upon the speed of the donor box and your internet link. During the install, you may be asked to enter an admin password for LDAP (make a note of it, you'll need it later). It will also ask about dumpcap but just take the default (No) and let the install run to its conclusion.</p>
-<p>SARK’s switching engine (<code>sailhpe</code> / <code>sarkhpe</code>) is pulled in as a dependency of <code>sail</code>. Apt installs the native binary for your host architecture (amd64 or arm64) — no manual symlink step is required.</p>
+<p>The install will take a good few minutes depending upon the speed of the donor box and your internet speed. During the install, you may be asked to enter an admin password for LDAP (make a note of it, you'll need it later if you decide to deploy LDAP as a phone directory). It will also ask about dumpcap but just take the default (No) and let the install run to its conclusion.</p>
 <h3 id="reboot">Reboot<a class="headerlink" href="#reboot" title="Permanent link">#</a></h3>
 <p>Now reboot your new PBX:</p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>reboot
