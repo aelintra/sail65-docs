@@ -1,6 +1,6 @@
 # Installation
 
-V6 can be installed onto X86 or ARM platforms. Only 64-bit architectures are supported. It will happily install on bare-metal or in virtual environments and has additional support for AWS EC2 instances. SARK is developed on Ubuntu and it should ideally be installed onto that distro but you may be able to install it onto other "debian-like" distros (YMMV).
+V6.5 replaces V6.0 and all previous releases. It can be installed onto X86 or ARM platforms. Only 64-bit architectures are supported. It will happily install on bare-metal or in virtual environments and has additional support for AWS EC2 instances. SARK is developed on Ubuntu and it should ideally be installed onto that distro but you may be able to install it onto other "debian-like" distros (YMMV).
 
 - It will work with most modern browsers.
 - It will NOT work on any browser that doesn't support jQuery or has it disabled.
@@ -8,7 +8,7 @@ V6 can be installed onto X86 or ARM platforms. Only 64-bit architectures are sup
 
 ## Before you begin
 
-- V6.5 is designed to run as an appliance and must not be installed onto a multi-purpose system that has other software already installed on it. If you try, you will likely break both the existing systems and SARK. You must begin with an Ubuntu 24.04 minimal install which contains nothing but an SSH server.
+V6.5 is designed to run as an *appliance* and must not be installed onto a multi-purpose system that has other software already installed on it. If you try, you will likely break both the existing systems and SARK. You must begin with an Ubuntu 24.04 minimal install which contains nothing but an SSH server.
 
 ## Installing the package manager
 
@@ -17,47 +17,48 @@ SARK uses the packagecloud repo.   Here are the steps you need to prepare to use
 ```sh
 sudo apt update
 sudo apt upgrade
-curl -s https://packagecloud.io/install/repositories/aelintra/SARK/script.deb.sh | sudo bash
+sudo reboot
+```
+
+```sh
+curl -s https://packagecloud.io/install/repositories/aelintra/SARK65/script.deb.sh | sudo bash
 ```
 
 
 ## SARK 6.5 Installation
 
-The latest SARK 6.5 will auto-install on Ubuntu 22.04 LTS (Jammy Jellyfish).  It may install on other debian-like releases, but you will need to grab the deb packages from GitHub and install them manually (https://github.com/aelintra/sail65).
+The latest SARK 6.5 will auto-install on Ubuntu 24.04 LTS (Noble Numbat).  It may install on other debian-like releases, but you will need to grab the deb packages from GitHub and install them manually (https://github.com/aelintra/sail65).
 
 
 ### Installing a Mail Agent
 
-If this is a new install, you should install a mail agent. SARK has on-board support for a lightweight mail agent called ssmtp. If you install it, then SARK will provide a tab in the networking section for you to configure it. Install it now (so that SARK can set the correct permissions) ...:
+If this is a new install, you should install a mail agent. SARK has on-board support for a lightweight mail agent called *ssmtp*. If you install it, then SARK will provide a tab in the networking section for you to configure it. Install it now (so that SARK can set the correct permissions) ...:
 
 ```sh
 sudo apt install ssmtp
-```
-
-**Note:** Ubuntu creates the ssmtp directory with secure access permissions. You must fix it by doing:
-
-```sh
 sudo chmod +x /etc/ssmtp
 ```
 
-### Install mySQL/Mariadb
+### Install MySQL/Mariadb
 
-The SARK install uses an SQL database to process call statistics.  It can be either mysql or mariadb but SARK does not specify which, so you'll need to decide. If in doubt, choose mariadb.   Install it now ...  
+SARK uses an SQL database to process call statistics.  It can be either mysql or mariadb but SARK does not specify which, so you'll need to decide. If in doubt, choose mariadb.   Install it now ...  
+
 
 ```sh
-sudo apt install mysql-server
+sudo apt install mariadb-server
 ```
 
 OR
 
 ```sh
-sudo apt install mariadb-server
+sudo apt install mysql-server
 ```
+
 **N.B. DO NOT run mysql_secure_installation yet!!**   The SARK install will automatically build the CDR Database for you but it needs access to mysql root without a password.   Once the installation is done, you *should* then run **mysql_secure_installation** to secure your DB instance (see below).
 
 ### Install iptables
 
-Ubuntu 24.04 favours ufw and it can conflict with shorewall so disable it.
+Ubuntu 24.04 favours *ufw*, SARK uses *shorewall* with *iptables*.   so... disable ufw and install iptables.
 
 ```sh
 sudo systemctl disable --now ufw
@@ -71,9 +72,7 @@ sudo apt install iptables iptables-persistent
 sudo apt install sail
 ```
 
-The install will take a good few minutes depending upon the speed of the donor box and your internet link. During the install, you may be asked to enter an admin password for LDAP (make a note of it, you'll need it later). It will also ask about dumpcap but just take the default (No) and let the install run to its conclusion.
-
-SARK’s switching engine (`sailhpe` / `sarkhpe`) is pulled in as a dependency of `sail`. Apt installs the native binary for your host architecture (amd64 or arm64) — no manual symlink step is required.
+The install will take a good few minutes depending upon the speed of the donor box and your internet speed. During the install, you may be asked to enter an admin password for LDAP (make a note of it, you'll need it later if you decide to deploy LDAP as a phone directory). It will also ask about dumpcap but just take the default (No) and let the install run to its conclusion.
 
 ### Reboot
 
@@ -81,21 +80,6 @@ Now reboot your new PBX:
 
 ```sh
 sudo reboot
-```
-
-### Choose your voicemail module
-
-For Ubuntu 24.04 and higher you will need to choose which voicemail module you want to use with Asterisk.  There are three choices:-
-
-- app_voicemail.so
-- app_voicemail_imap.sp
-- app_voicemail_odbc.so
-
-For most users, *app_voicemail.so* is the one you will likely wish to choose.   So, you must deselect the ones you don't in the *modules* section of /etc/asterisk/modules.conf:-
-
-```
-noload => app_voicemail_imap.so
-noload => app_voicemail_odbc.so
 ```
 
 ### Install Asterisk Extra Sounds Package
@@ -173,7 +157,7 @@ Follow the script prompts.
 
 ## Next steps
 
-If you were running a previous version of SARK on your browser then you will need to clear your broswer cache or open an incognito/private window before proceeding. If you don't, you'll get odd-looking output as the cached jQuery code fights with the new V6 output.
+If you were running a previous version of SARK on your browser then you will need to clear your browser cache or open an incognito/private window before proceeding. If you don't, you'll get odd-looking output as the cached jQuery code fights with the new V6.5 output.
 
 Your SARK app will be at `https://your.server.ip.address`
 
@@ -182,4 +166,4 @@ Default login credentials will be...
 - **UID:** admin
 - **PWD:** sarkadmin
 
-If this is a brand new install, the SARK browser application will force you to change your password on first login. This will change BOTH the browser AND linux root passwords.
+The SARK browser application will force you to change your password on first login. This will change BOTH the browser AND linux root passwords.

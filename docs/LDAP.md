@@ -1,4 +1,4 @@
-## LDAP
+# LDAP
 
 If you wish to use SARK's LDAP support to provide directory lookups to your phones, proceed as follows:
 

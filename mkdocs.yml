@@ -57,13 +57,21 @@ theme:
   favicon: assets/images/Sark_favicon.png
   icon:
     logo: logo
+
+nav:
+  - Home: index.md
+  - Getting started:
+      - Installation: Installation.md
+      - Upgrade: upgrade.md
+  - Administration:
+      - Firewall: firewall.md
+      - Certificates: certificates.md
+      - Feature keys: featureKeys.md
+      - LDAP: LDAP.md
+
 # Additional configuration
 extra:
   pname: Sark65
-  nav:
-     - Home: index.md
-     - Getting started:
-        - Creating your site: Page1.md
 
 # Extensions
 markdown_extensions:
